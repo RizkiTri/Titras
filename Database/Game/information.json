@@ -1,0 +1,9 @@
+{
+    "version": "0.0.1",
+    "player": {
+        "name": "Sequtiyhusky",
+        "birthday": "21/11/2008",
+        "gender": "male"
+    },
+    "profilePath": "/profile"
+}

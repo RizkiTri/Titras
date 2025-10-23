@@ -1,0 +1,935 @@
+{
+    "title": "Saga Diponegoro - CLI Scene Pack (Dialog Expanded)",
+    "locale": "id-ID",
+    "version": "1.1",
+    "player_role": {
+        "type": "supporting",
+        "description": "Kamu berperan sebagai tokoh pendukung (kurir / pembawa pesan / penjaga logistik). Dialog dibuat agar bekerja baik di CLI: jelas, pendek, dan bercabang."
+    },
+    "usage_hint_cli": "Setiap node dialog memiliki 'id'. Tampilkan 'text' ke pemain lalu cetak daftar 'choices'. Pemain memilih nomor; engine pindah ke 'next'. Efek (rewards/penalties) diterapkan saat 'effects' diberikan.",
+    "scenes": [
+        {
+            "id": "scene-01-prologue",
+            "title": "Isyarat di Sawah — Prologue (CLI-ready)",
+            "summary": "Dusun gelisah; isu makam dan jalan memicu ketegangan. Pilihanmu menentukan apakah kau jadi kurir, mata-mata, atau penengah.",
+            "historical_summary": "Akar protes: pembangunan jalan dan campur tangan pada makam adat menjelang 1825. Reaksi lokal sering kali berawal dari hal-hal semacam ini.",
+            "dialogue_nodes": [
+                {
+                    "id": "s1-n1",
+                    "speaker": "Narator",
+                    "short_text": "Kedatanganmu di dusun",
+                    "text": "Kamu tiba di dusun saat senja. Debu jalan menempel di pakaian, suara laki-laki dan perempuan berbisik di antara rumah. Seorang Lurah berdiri di alun; ia memandangmu seperti menunggu keputusan.",
+                    "historical_text": "Konteks singkat: sebelumnya, proyek jalan dan upaya 'modernisasi' sering mengabaikan tanah-tanah leluhur yang menjadikan warga marah.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Mendekat dan menyapa lurah",
+                            "next": "s1-n2",
+                            "consequence_text": "Kau mendekat pelan, menurunkan kepala sedikit."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Mengendap mencari utusan",
+                            "next": "s1-n5",
+                            "consequence_text": "Kau menyelinap ke tepi jalan, memperhatikan bayang-bayang."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n2",
+                    "speaker": "Lurah Dusun",
+                    "short_text": "Lurah curiga",
+                    "text": "Lurah: \"Aduh... Berita buruk. Mereka hendak memotong jalan lewat sini — melewati makam leluhur. Kau datang dari kota? Apa kabar di luar?\"",
+                    "historical_text": "Warga menganggap pemugaran makam tanpa izin sebagai pelecehan adat — pemicu konflik dalam banyak sumber.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "'Hanya kabar dan tenaga' — tenang",
+                            "next": "s1-n3",
+                            "consequence_text": "Lurah menghela napas; matanya cemas tapi penuh harap."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Keluarkan surat tertutup (tunjuk)",
+                            "next": "s1-n4",
+                            "consequence_text": "Wajah lurah berubah; ia meraih surat dengan hati-hati."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n3",
+                    "speaker": "Lurah Dusun",
+                    "short_text": "Lurah menceritakan rencana",
+                    "text": "Lurah: \"Mereka bilang itu demi 'raja' dan 'usaha umum' — tapi siapa yang tanya kita? Kita takut makam akan digusur. Kami butuh utusan yang berani.\"",
+                    "historical_text": "Penguasa kolonial kerap mengutamakan proyek yang dianggap 'umum' tanpa konsultasi adat.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Terima tugas sebagai kurir malam ini",
+                            "next": "s1-n6",
+                            "effects": { "quest": "carry_message" },
+                            "consequence_text": "Kau mengangguk; beban tugas terasa di bahumu."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Sarankan bicara pada penguasa lokal dulu",
+                            "next": "s1-n7",
+                            "consequence_text": "Lurah menatapmu, ragu antara harap dan takut."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n4",
+                    "speaker": "Lurah Dusun",
+                    "short_text": "Lurah memeriksa surat",
+                    "text": "Lurah (berbisik): \"Ini tanda tangan orang-orang yang tak mau disebut. Jika sampai ke tangan Belanda, bahaya besar. Kau tahu apa artinya ini?\"",
+                    "historical_text": "Surat rahasia sering menjadi alat koordinasi; bila bocor, dapat mengakibatkan penangkapan atau pembalasan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Simpan surat: 'Ini untuk Pangeran'",
+                            "next": "s1-n6",
+                            "effects": { "reputation": 2 },
+                            "consequence_text": "Kau menyembunyikan surat; Lurah menunduk menghargai keberanianmu."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Serahkan surat untuk diamankan",
+                            "next": "s1-n8",
+                            "effects": { "trust": 1 },
+                            "consequence_text": "Lurah mengangguk setuju, menyimpan surat dalam peti berlapis kain."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n5",
+                    "speaker": "Utusan Misterius",
+                    "short_text": "Utusan berbisik",
+                    "text": "Utusan (berbisik): \"Kau tampak lincah. Pangeran butuh kabar. Ada rute yang berbahaya; ada pos Belanda. Mau kau bawa pesan?\"",
+                    "historical_text": "Pergerakan pesan kerap memakai jalur tak resmi karena patroli kolonial. Keberhasilan sering bergantung pada pengetahuan jalan setapak.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Terima pesan, sembunyikan di pakaian",
+                            "next": "s1-n6",
+                            "effects": { "stealth": 1 },
+                            "consequence_text": "Utusan mengangguk cepat dan menyerahkan kertas itu padamu."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tanya: 'Apa risikonya?'",
+                            "next": "s1-n9",
+                            "consequence_text": "Utusan menunduk, lalu berkata serius."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n6",
+                    "speaker": "Narator",
+                    "short_text": "Tugas kurir diterima",
+                    "text": "Narator: \"Kau menerima tugas: antarkan pesan itu ke markas kecil. Lurah memberimu bekal seadanya; malam menunggu dan jalan penuh bahaya.\"",
+                    "historical_text": "Kurir dan perantara adalah nyawa gerakan; tanpa mereka koordinasi gagal.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Berangkat malam ini (resiko tinggi)",
+                            "next": "scene-02-uprising-start",
+                            "effects": { "time": "night" },
+                            "consequence_text": "Kau melangkah ke gelap, menyesuaikan kain penutup kepala."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tunggu pagi (lebih aman)",
+                            "next": "scene-02-wait-morning",
+                            "effects": { "reputation": -1 },
+                            "consequence_text": "Kamu menunggu; beberapa warga menggerutu namun hatinya sedikit lega."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n7",
+                    "speaker": "Lurah Dusun",
+                    "short_text": "Lurah ragu pada diplomasi",
+                    "text": "Lurah: \"Diplomasi... sudah sering kami coba. Mereka hanya mendengar kata-kata, bukan suara tanah. Warga menuntut tindakan.\"",
+                    "historical_text": "Seringkali tuntutan diplomasi tak cukup saat akumulasi kebijakan merugikan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Tetap coba diplomasi",
+                            "next": "s1-n8",
+                            "consequence_text": "Kamu menulis surat permintaan audiensi yang sederhana."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Dukung rencana perlawanan terkoordinasi",
+                            "next": "s1-n6",
+                            "consequence_text": "Kamu membantu menyiapkan rencana pengiriman pesan."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n8",
+                    "speaker": "Lurah Dusun",
+                    "short_text": "Lurah menenangkan warga",
+                    "text": "Lurah: \"Baik. Kita akan berhati-hati. Tidak ada yang ingin melihat anak-anak ikut dalam baku. Jika kau pergi, pulanglah dengan selamat.\"",
+                    "historical_text": "Pemimpin lokal selalu mempertimbangkan keselamatan warga ketika membuat keputusan sulit.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Siap berangkat (aman/terencana)",
+                            "next": "scene-02-uprising-start",
+                            "consequence_text": "Kau berjanji menjaga hidup warga lebih dari serangan heroik."
+                        }
+                    ]
+                },
+                {
+                    "id": "s1-n9",
+                    "speaker": "Utusan Misterius",
+                    "short_text": "Utusan jelaskan risikonya",
+                    "text": "Utusan: \"Risikonya penangkapan, hukuman, atau yang lebih buruk. Tapi tanpa penyampaian, rencana tak akan berjalan. Pilihlah—nyawa di tanganmu.\"",
+                    "historical_text": "Banyak kurir menghadapi konsekuensi berat bila tertangkap; tapi jaringan komunikasi adalah prasyarat perlawanan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Aku terima risikonya",
+                            "next": "s1-n6",
+                            "effects": { "bravery": 1 },
+                            "consequence_text": "Kamu menggenggam pesan erat; langkahmu pasti meski takut ada di hati."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tidak—kembali ke dusun",
+                            "next": "s1-n8",
+                            "consequence_text": "Kamu memilih keselamatan; beberapa wajah tampak lega, beberapa menatap kecewa."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scene-02-wait-morning",
+            "title": "Menunggu Fajar — Jalan yang Ditunda",
+            "summary": "Kau memilih menunggu pagi demi keamanan. Pagi membawa cahaya — dan risiko baru: patroli yang berbeda, kesempatan yang hilang, atau pertemuan tak terduga.",
+            "historical_summary": "Menunggu hingga siang sering mengurangi risiko perjalanan di malam hari, namun patroli kolonial memiliki jadwal yang berubah-ubah; menunggu bisa mengubah dinamika intel dan peluang operasi gerilya.",
+            "dialogue_nodes": [
+                {
+                    "id": "s2w-n1",
+                    "speaker": "Narator",
+                    "short_text": "Fajar menyingsing, kau menunggu",
+                    "text": "Narator: \"Kau memilih menunggu fajar. Di pagi yang berkabut, suara ayam dan aktivitas pedagang mulai memenuhi jalan. Lurah mengangguk—ia lega, namun raut wajah beberapa pemuda menunjukkan kekecewaan karena kesempatan bisa hilang.\"",
+                    "historical_text": "Banyak kurir memilih malam untuk menghindari patroli; menunggu jadi strategi jika intel belum lengkap, tapi bisa membuat musuh mengubah rute patroli mereka.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Berangkat saat fajar (lebih terlihat tapi lebih aman di jalan)",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "stealth": -1, "risk": -1 },
+                            "consequence_text": "Kau berangkat di bawah cahaya pagi—lebih mudah terlihat, tapi jalur lebih aman dari kecelakaan malam."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Cari informasi tambahan di pasar sebelum berangkat",
+                            "next": "s2w-n2",
+                            "consequence_text": "Kau menyelinap ke pasar, mencari orang yang mencurigakan atau informasi rute."
+                        },
+                        {
+                            "id": "c3",
+                            "label": "Tunda lagi hingga sore—kaji ulang rencana",
+                            "next": "s2w-n5",
+                            "consequence_text": "Kamu memutuskan menunggu lebih lama; suasana berubah tegang."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2w-n2",
+                    "speaker": "Pedagang Lokal",
+                    "short_text": "Mengendus kabar di pasar",
+                    "text": "Pedagang (berbisik): \"Aku lihat pasukan lewat pukul sembilan, tapi hanya patroli kecil. Ada rumor mereka menambah pos di jalur barat—jangan lewat situ.\"",
+                    "historical_text": "Pasar dan pedagang sering menjadi sumber intel lokal—mereka memperhatikan jadwal patroli dan kegiatan pasukan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Ambil rute alternatif yang disarankan pedagang",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "stealth": 1 },
+                            "consequence_text": "Kau mengikuti petunjuk—rute ini berliku, namun mengurangi peluang pertemuan langsung dengan patroli."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Terima info tapi tetap ke rute semula",
+                            "next": "s2w-n3",
+                            "consequence_text": "Kau memilih menghadapi risiko di jalur semula—kadang keberanian diperlukan."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2w-n3",
+                    "speaker": "Narator",
+                    "short_text": "Patroli berubah jalur",
+                    "text": "Narator: \"Di tengah perjalanan, kau melihat beberapa pasukan berputar—sepertinya mereka menambah pengawasan pagi ini. Kecepatanmu diuji; langkah musti dipilih.\"",
+                    "historical_text": "Kolonial menyesuaikan patroli berdasarkan informasi lokal; perubahan tak terduga sering memaksa kurir bergeser strategi secara spontan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Laju pelan—hindari kontak",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "stealth": 1, "risk": 0 },
+                            "consequence_text": "Kau bergerak pelan, berusaha tak menimbulkan kecurigaan."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Langsung menuju tujuan—coba kecepatan",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "speed": 1, "risk": 1 },
+                            "consequence_text": "Kau berlari lewat jalur terbuka; berhasil melewati beberapa pos namun tentu bukan tanpa risiko."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2w-n4",
+                    "speaker": "Lurah Dusun",
+                    "short_text": "Reaksi warga—pilih tanggung jawab",
+                    "text": "Lurah: \"Kau kembali dengan info? Benar atau salah, warga menunggu hasil. Kalau kita ambil terlalu banyak risiko, desa bisa jadi sasaran. Pilih yang melindungi mereka.\"",
+                    "historical_text": "Pemimpin lokal sering menimbang antara keuntungan operasi dan keselamatan komunitas, memutuskan kapan dan bagaimana mengorbankan risiko.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Utamakan keselamatan warga—batalkan misi hari ini",
+                            "next": "s2w-n5",
+                            "effects": { "reputation": 1 },
+                            "consequence_text": "Kamu menangguhkan misi demi warga—beberapa berterima kasih, beberapa kecewa."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Lanjutkan misi dengan tim kecil",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "stealth": 1, "risk": 1 },
+                            "consequence_text": "Kamu pilih tim kecil—lebih gesit namun rentan."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2w-n5",
+                    "speaker": "Narator",
+                    "short_text": "Menunggu lebih lama—akibatnya",
+                    "text": "Narator: \"Menunggu sampai sore memberi perspektif baru: suara seruan, laporan patroli meningkat, dan ada laporan konvoi yang semestinya lewat sudah lewat pagi tadi. Kesempatan tertentu hilang, tapi desa juga lebih aman hari ini.\"",
+                    "historical_text": "Keterlambatan kadang menimbulkan penyesalan karena peluang intel hilang, namun sering juga menyelamatkan nyawa ketika patroli besar lewat pada malam yang sama.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Terima bahwa beberapa peluang hilang, persiapkan rencana baru",
+                            "next": "scene-02-uprising-start",
+                            "effects": { "reputation": 0 },
+                            "consequence_text": "Kau menata langkah baru; perlawanan tak berhenti walau ritme berubah."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Gunakan malam berikutnya untuk usaha lain (rekrut/siapkan)",
+                            "next": "scene-04-benteng",
+                            "effects": { "preparation": 1 },
+                            "consequence_text": "Kau fokus pada persiapan—mempersiapkan bahan dan rencana untuk kesempatan berikutnya."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scene-02-uprising-start",
+            "title": "Pemberontakan Dimulai — Pangeran Memanggil",
+            "summary": "Malam perencanaan: Kyai Mojo dan tokoh setempat menyusun langkah. Pilihan taktis dan moral pemain menentukan jenis keterlibatan.",
+            "historical_summary": "Setelah protes lokal merebak, tokoh-tokoh seperti Diponegoro mulai memobilisasi dukungan. Pergerakan awal sering berupa aksi kecil yang terkoordinasi dan pengiriman informasi rahasia.",
+            "dialogue_nodes": [
+                {
+                    "id": "s2-n1",
+                    "speaker": "Kyai Mojo",
+                    "short_text": "Kyai berkhotbah singkat",
+                    "text": "Kyai Mojo: \"Anak muda, dengarkan. Malam ini kita pilih jalan yang adil — bukan hanya kemenangan, tapi bagaimana rakyat selamat. Apakah kau membawa peta atau tekad?\"",
+                    "historical_text": "Kyai dan tokoh agama memegang peranan moral dan taktis; mereka memberikan legitimasi spiritual sehingga massa mau ikut.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Serahkan peta secara rahasia",
+                            "next": "s2-n2",
+                            "effects": { "intel": 1 },
+                            "consequence_text": "Kyai mengangguk, matanya penuh rasa percaya."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Sarankan gangguan di pos patroli",
+                            "next": "s2-n3",
+                            "consequence_text": "Kyai mencatat ide itu; suara-suara lain mulai berbisik setuju."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2-n2",
+                    "speaker": "Kyai Mojo",
+                    "short_text": "Arahan jalur selatan",
+                    "text": "Kyai Mojo: \"Jalan barat rawan kuda patroli. Lewat jalur batu kecil di selatan, ada jembatan sempit — jangan menyalakan api. Jika kau menyelinap, bawa sedikit bekal dan hati-hati pada pos patroli.\"",
+                    "historical_text": "Pengetahuan lokal tentang lorong-lorong, jalur setapak, dan musim angin sangat krusial untuk gerakan gerilya.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Menyelinap lewat jalur selatan (stealth)",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "stealth": 2 },
+                            "consequence_text": "Kamu menyingkap kain penutup dan berjalan pelan seperti bayangan."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Ajukan serangan langsung (risiko tinggi)",
+                            "next": "s2-n4",
+                            "effects": { "aggression": 2 },
+                            "consequence_text": "Suasana menegang; beberapa orang terpesona oleh keberanianmu."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2-n3",
+                    "speaker": "Kyai Mojo",
+                    "short_text": "Rencana gangguan",
+                    "text": "Kyai Mojo: \"Gangguan bisa menyelamatkan banyak jiwa jika dilakukan dengan tuntas. Kita bisa bakar jerami di timur atau bunyikan lonceng palsu agar pasukan berpencar.\"",
+                    "historical_text": "Pengalihan perhatian (distract) adalah taktik rendah korban yang sering dipilih untuk memindahkan pasukan lawan tanpa bentrokan besar.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Bakar jerami di timur (distract)",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "distract": 1 },
+                            "consequence_text": "Asap melonjak; di kejauhan ada riuh yang menutupi langkahmu."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Buat keributan pasar (suara dan tampar panci)",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "distract": 2 },
+                            "consequence_text": "Suara berdengung dari pasar; musuh mengalihkan pandangannya."
+                        }
+                    ]
+                },
+                {
+                    "id": "s2-n4",
+                    "speaker": "Kyai Mojo",
+                    "short_text": "Kyai mengingatkan risiko",
+                    "text": "Kyai Mojo: \"Keberanian tanpa rencana memakan korban. Tapi jika kau pilih jalan itu, pastikan ada jalan mundur dan siapa yang menampung terluka.\"",
+                    "historical_text": "Keputusan serangan terbuka sering mengakibatkan eskalasi; pemimpin yang bijak mempertimbangkan logistik perawatan dan jalur mundur.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Lanjutkan serangan terbuka (siap risiko)",
+                            "next": "scene-03-ambush-start",
+                            "effects": { "morale": 2 },
+                            "consequence_text": "Kamu mengangkat senjata; beberapa orang bersorak, beberapa menatap cemas."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tarik kembali; rencanakan infiltrasi",
+                            "next": "s2-n2",
+                            "consequence_text": "Kamu memilih kehati-hatian, memikirkan kehidupan warga terlebih dulu."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scene-03-ambush-start",
+            "title": "Penyergapan di Jembatan Progo (Skirmish)",
+            "summary": "Penyergapan terhadap konvoi Belanda di jembatan — pilihanmu menentukan kecepatan, risiko, dan nasib warga di sekitar.",
+            "historical_summary": "Perang Jawa sering melibatkan serangan gerilya di jalur suplai dan konvoi—pengetahuan lokal pada jembatan, arus sungai, dan rute belakang sering menjadi kunci keberhasilan.",
+            "dialogue_nodes": [
+                {
+                    "id": "s3-n1",
+                    "speaker": "Narator",
+                    "short_text": "Konvoi terlihat di kejauhan",
+                    "text": "Narator: \"Di pagi berkabut, konvoi kecil Belanda tampak bergerak perlahan menuju jembatan sempit. Ada gerobak, prajurit berpistol, dan beberapa kuda. Apa rencanamu?\"",
+                    "historical_text": "Serangan terhadap konvoi kecil sering dipilih karena memberi dampak logistik dan moral yang besar tanpa harus melawan benteng.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Atur penyergapan dari semak (sergap mendadak)",
+                            "next": "s3-n2",
+                            "effects": { "surprise": 2 },
+                            "consequence_text": "Kau dan tim bersembunyi; napas menahan, mata tertuju pada gerobak pertama."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Sabotase roda gerobak (buat delay)",
+                            "next": "s3-n3",
+                            "effects": { "delay": 3 },
+                            "consequence_text": "Beberapa pemuda menyiapkan alat sederhana untuk merusak poros gerobak."
+                        }
+                    ]
+                },
+                {
+                    "id": "s3-n2",
+                    "speaker": "Slamet (rekanmu)",
+                    "short_text": "Perintah serbu",
+                    "text": "Slamet (berbisik): \"Saat kereta pertama melewati titik, serbu! Tembak terarah, ambil amunisi—jangan rusak barang warga.\"",
+                    "historical_text": "Teknik penyergapan menekankan unsur kejutan dan pengawalan agar korban sipil bisa diminimalkan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Perintahkan 'Serbu!' (langsung)",
+                            "next": "s3-n4",
+                            "effects": { "enemy_morale": -2 },
+                            "consequence_text": "Serbuan pecah; prajurit panik dan beberapa amunisi jatuh di tanah."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tembakkan terkontrol (hemat amunisi)",
+                            "next": "s3-n5",
+                            "effects": { "ammo_used": -1 },
+                            "consequence_text": "Tembakan diarahkan untuk melumpuhkan, bukan membunuh; beberapa musuh terkapar."
+                        }
+                    ]
+                },
+                {
+                    "id": "s3-n3",
+                    "speaker": "Dewi (rekanmu)",
+                    "short_text": "Sabotase roda",
+                    "text": "Dewi (berbisik): \"Jika roda rusak, konvoi terhenti—tapi api bisa menyala dari jerami, dan warga di dekat jembatan berisiko.\"",
+                    "historical_text": "Sabotase logistik sering efektif, namun taktik ini membawa risiko kebakaran dan korban sipil bila tak hati-hati.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Fokus pada delay (aman)",
+                            "next": "s3-n6",
+                            "effects": { "success_chance": 0.8 },
+                            "consequence_text": "Roda mulai macet; konvoi terhenti, prajurit kebingungan."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Padamkan api lalu serang",
+                            "next": "s3-n5",
+                            "effects": { "safety": 1 },
+                            "consequence_text": "Kau padamkan percikan lalu memimpin serangan terarah."
+                        }
+                    ]
+                },
+                {
+                    "id": "s3-n4",
+                    "speaker": "Narator",
+                    "short_text": "Serbuan langsung",
+                    "text": "Narator: \"Kau memerintahkan serbuan penuh. Kekacauan meletus — beberapa prajurit terjatuh, warga berteriak ketakutan, ada barang yang tercecer.\"",
+                    "historical_text": "Serangan frontal bisa memberi kemenangan cepat namun meningkatkan risiko balasan dan korban sipil.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Kumpulkan amunisi dan mundur cepat",
+                            "next": "scene-04-benteng",
+                            "effects": { "supplies": 3 },
+                            "consequence_text": "Kau membawa amunisi penting dan menarik pasukanmu mundur sebelum bala bantuan datang."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Kejar konvoi untuk rampas surat penting",
+                            "next": "s3-n7",
+                            "effects": { "intel": 2 },
+                            "consequence_text": "Di tumpukan gerobak, kamu menemukan beberapa surat yang berharga."
+                        }
+                    ]
+                },
+                {
+                    "id": "s3-n5",
+                    "speaker": "Narator",
+                    "short_text": "Tembakan terkontrol",
+                    "text": "Narator: \"Tembakan terkontrol membuat sebagian prajurit lawan lumpuh. Pertempuran singkat tapi efektif; kerugianmu minimal.\"",
+                    "historical_text": "Menghemat amunisi dan mengutamakan sasaran penting adalah pola gerilya yang bertahan lama.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Ambil perlengkapan lalu kembali ke markas",
+                            "next": "scene-04-benteng",
+                            "effects": { "supplies": 2 },
+                            "consequence_text": "Kamu membawa beberapa perlengkapan dan kembali melalui rute aman."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tolong warga yang terluka di jembatan",
+                            "next": "scene-04-benteng",
+                            "effects": { "reputation": 3 },
+                            "consequence_text": "Kau membantu warga; reputasimu naik di mata penduduk setempat."
+                        }
+                    ]
+                },
+                {
+                    "id": "s3-n6",
+                    "speaker": "Narator",
+                    "short_text": "Delay berhasil",
+                    "text": "Narator: \"Delay bekerja. Konvoi terhambat lama, tapi beberapa prajurit melepaskan tembakan panik ke arah pemukiman. Waktu jadi masalah.\"",
+                    "historical_text": "Menunda pergerakan lawan memberi kesempatan bagi pasukan gerilya lain untuk melakukan operasi tambahan atau mengamankan warga.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Evakuasi warga dulu (prioritas kemanusiaan)",
+                            "next": "scene-04-benteng",
+                            "effects": { "reputation": 4 },
+                            "consequence_text": "Kamu memimpin evakuasi; warga terlindung dari tembakan dan api."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tuntaskan misi ambil amunisi",
+                            "next": "s3-n7",
+                            "effects": { "risk": 2 },
+                            "consequence_text": "Kamu dan tim berani mengambil amunisi yang ditinggalkan, berisiko namun penting untuk kelanjutan perlawanan."
+                        }
+                    ]
+                },
+                {
+                    "id": "s3-n7",
+                    "speaker": "Narator",
+                    "short_text": "Menemukan surat dan amunisi",
+                    "text": "Narator: \"Di antara kotak-kotak yang ditinggalkan, kamu menemukan surat-surat penting dan petunjuk rute pasokan. Ini intel berharga untuk perencanaan selanjutnya.\"",
+                    "historical_text": "Mengambil intel dari konvoi yang disergap sering memberi keuntungan strategi jangka panjang bagi pemberontak.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Bawa ke Kyai Mojo",
+                            "next": "scene-04-benteng",
+                            "effects": { "intel": 3 },
+                            "consequence_text": "Kamu mengemas surat-surat itu—informasi itu akan mengubah rencana lawan."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Simpan untuk dirimu—jual ke penyelundup",
+                            "next": "scene-04-benteng",
+                            "effects": { "money": 10, "morality": -2 },
+                            "consequence_text": "Kamu menjual sebagian intel; uang masuk tapi hati tertusuk."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scene-04-benteng",
+            "title": "Benteng-Benteng Belanda — Perang Pos",
+            "summary": "Infiltrasi dan sabotase di lini pasokan musuh; pemain diuji soal moral: mengorbankan pasokan musuh yang bisa juga merugikan warga atau mencuri demi kelangsungan perlawanan.",
+            "historical_summary": "Belanda mengokohkan pos-pos benteng dan gudang di sepanjang jalur logistik. Menyerang gudang atau konvoi mengganggu suplai, tetapi selalu ada risiko dampak sipil serta pembalasan keras.",
+            "dialogue_nodes": [
+                {
+                    "id": "s4-n1",
+                    "speaker": "Narator",
+                    "short_text": "Mengintai benteng musuh",
+                    "text": "Narator: \"Kamu mengintai dari balik semak; benteng Belanda menjulang, ada gudang gandum dan gudang amunisi di sisi timur. Dua rekamu menunggu putusan.\"",
+                    "historical_text": "Gudang makanan dan amunisi menjadi sasaran utama gerilya karena melemahkan kemampuan musuh tanpa harus merebut benteng secara frontal.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Sabotase gudang gandum (kurangi suplai)",
+                            "next": "s4-n2",
+                            "effects": { "sabotage": 1 },
+                            "consequence_text": "Kamu menyiapkan serbuk pemicu kecil—malam ini bakal ada asap."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Curi kuda dari kandang (mobilitas)",
+                            "next": "s4-n3",
+                            "effects": { "mobility": 1 },
+                            "consequence_text": "Kau dan rekamu menyelinap ke kandang; kuda-pelarian siap dipakai."
+                        }
+                    ]
+                },
+                {
+                    "id": "s4-n2",
+                    "speaker": "Rafi (rekanmu)",
+                    "short_text": "Moral dilemmas tentang gandum",
+                    "text": "Rafi (pelan): \"Jika kita bakar, warga yang kelaparan jadi korban juga. Kita perlu rencana distribusi setelahnya, atau ini jadi bumerang.\"",
+                    "historical_text": "Taktik pembakaran sering menimbulkan dilema: menurunkan suplai musuh tapi juga berpotensi memperparah kelaparan lokal.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Bakar sebagian, sisakan cukup untuk warga",
+                            "next": "s4-n4",
+                            "effects": {
+                                "tactical_success": 1,
+                                "morality": -1
+                            },
+                            "consequence_text": "Kau bakar sebagian gudang; asap memenuhi malam tetapi warga masih dapat sisa kecil."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tunda dan cari rencana lain (ambil amunisi)",
+                            "next": "s4-n5",
+                            "effects": { "patience": 1 },
+                            "consequence_text": "Kamu memilih menunggu; malam ini mengambil amunisi lebih aman."
+                        }
+                    ]
+                },
+                {
+                    "id": "s4-n3",
+                    "speaker": "Sari (rekanmu)",
+                    "short_text": "Kuda dicuri—risiko patroli meningkat",
+                    "text": "Sari (bisik): \"Kuda akan memperluas jangkauan kita, tapi jika ketahuan, patroli akan meningkat dan desa bisa dibakar sebagai balasan.\"",
+                    "historical_text": "Mengambil hewan-mobilitas musuh memberi keuntungan jangka pendek tapi sering meningkatkan risiko patroli dan razia balasan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Ambil kuda dan serang markas kecil di belakang garis",
+                            "next": "s4-n6",
+                            "effects": { "speed": 2 },
+                            "consequence_text": "Dengan kuda, kalian bergerak cepat ke belakang garis musuh—efektif tetapi berisiko."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tunda, tunggu momen aman",
+                            "next": "s4-n5",
+                            "consequence_text": "Kamu mundur, menunggu kesempatan lebih senyap."
+                        }
+                    ]
+                },
+                {
+                    "id": "s4-n4",
+                    "speaker": "Narator",
+                    "short_text": "Pembakaran parsial",
+                    "text": "Narator: \"Kamu membakar sebagian gudang pada malam berkabut. Pasokan musuh terganggu; Belanda menaikkan patroli dan memeriksa desa-desa terdekat.\"",
+                    "historical_text": "Pembalasan kadang cepat: patroli, razia, atau penahanan dilakukan sebagai tanggapan atas sabotase.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Kembali ke markas dengan rencana distribusi",
+                            "next": "scene-05-negotiation",
+                            "effects": { "momentum": 1 },
+                            "consequence_text": "Kalian pulang membawa rencana distribusi agar warga tidak kelaparan."
+                        }
+                    ]
+                },
+                {
+                    "id": "s4-n5",
+                    "speaker": "Narator",
+                    "short_text": "Serbuan konvoi kecil",
+                    "text": "Narator: \"Dengan kesabaran, kalian menemukan konvoi kecil lewat jalur sekunder. Serbuan kecil menghasilkan amunisi tanpa mengorbankan warga.\"",
+                    "historical_text": "Serbuan taktis pada konvoi sekunder sering menghasilkan hasil logistik tanpa eskalasi penuh pada benteng-benteng besar.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Ambil amunisi dan kembali ke markas",
+                            "next": "scene-05-negotiation",
+                            "effects": { "supplies": 2 },
+                            "consequence_text": "Kalian kembali dengan amunisi—senjata terasa lebih berat tetapi harapan bertambah."
+                        }
+                    ]
+                },
+                {
+                    "id": "s4-n6",
+                    "speaker": "Narator",
+                    "short_text": "Serangan jauh di belakang garis",
+                    "text": "Narator: \"Dengan kuda-kuda curian, kalian mengganggu rute pasokan jauh di belakang garis musuh—ini efektif tapi patroli meningkat dan beberapa desa disisir.\"",
+                    "historical_text": "Operasi yang jauh ke belakang garis sering menghancurkan logistik musuh namun memicu razia balasan yang brutal.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Manfaatkan momentum untuk serang markas kecil",
+                            "next": "scene-05-negotiation",
+                            "effects": { "momentum": 1 },
+                            "consequence_text": "Kalian menyerbu markas kecil dan merebut posisi strategis sementara."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scene-05-negotiation",
+            "title": "Pertemuan di Magelang — Ujung Cerita",
+            "summary": "Dialog kritis yang bisa mengikuti sejarah atau menciptakan cabang alternatif.",
+            "dialogue_nodes": [
+                {
+                    "id": "s5-n1",
+                    "speaker": "Residen (wakil Belanda)",
+                    "text": "Tuan, kami beri jaminan keamanan. Hadirlah untuk berdiskusi tanpa kekerasan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Sampaikan peringatan: ada tanda-tanda jebakan",
+                            "next": "s5-n2",
+                            "effects": { "alertness": 1 }
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Patuhi protokol dan biarkan pertemuan berlangsung",
+                            "next": "s5-n3"
+                        }
+                    ]
+                },
+                {
+                    "id": "s5-n2",
+                    "speaker": "Kamu",
+                    "text": "Kau melihat gerak-gerik yang mencurigakan: prajurit yang tampak berlebih di sisi ruangan. Apa kau mau aku peringatkan Pangeran?",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Ya, bisikkan peringatan pada Pangeran",
+                            "next": "s5-n4",
+                            "effects": { "chance_to_avoid_capture": 0.6 }
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tidak—ikuti protokol agar tidak menimbulkan kecurigaan",
+                            "next": "s5-n3"
+                        }
+                    ]
+                },
+                {
+                    "id": "s5-n3",
+                    "speaker": "Narator",
+                    "text": "Sejarah berjalan: Pangeran hadir dan suasana tegang. Tamu duduk, lalu... perintah untuk menahan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Tidak ada lagi—Tamat (jalan sejarah)",
+                            "next": "scene-06-epilogue"
+                        }
+                    ]
+                },
+                {
+                    "id": "s5-n4",
+                    "speaker": "Pangeran Diponegoro",
+                    "text": "Kau bilang ada jebakan? Baik. Kalau benar, kita takkan biarkan orang-orang tergiring. Terima kasih. Mari kita tunda pertemuan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Ikut pulang secara tertutup (jalan alternatif)",
+                            "next": "scene-06-epilogue",
+                            "effects": { "alternate_history": true }
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Tegaskan ancaman terbuka—ajukan tuntutan keras",
+                            "next": "s5-n5",
+                            "effects": { "risk": 2 }
+                        }
+                    ]
+                },
+                {
+                    "id": "s5-n5",
+                    "speaker": "Narator",
+                    "text": "Konfrontasi pecah; beberapa tembakan dilepaskan; namun kamu berhasil menyelamatkan beberapa pengikut kecil.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Lari mengevakuasi rakyat",
+                            "next": "scene-06-epilogue",
+                            "effects": { "survivors": 5 }
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Bertahan dan bertempur (risiko tinggi)",
+                            "next": "scene-06-epilogue",
+                            "effects": { "casualties": 3 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "scene-06-epilogue",
+            "title": "Epilog — Jejak Peristiwa",
+            "summary": "Konsekuensi dari pilihanmu: penangkapan, pengasingan, keberlanjutan gerakan, atau alternatif sejarah. Scene ini merangkum dampak personal dan kolektif.",
+            "historical_summary": "Perang Jawa (1825–1830) meninggalkan jejak panjang: pemimpin dipenjara/pengasingan, desa-desa hancur, dan transformasi politik yang memengaruhi generasi. Banyak sumber mencatat baik keberanian lokal maupun biaya kemanusiaan yang besar.",
+            "dialogue_nodes": [
+                {
+                    "id": "s6-n1",
+                    "speaker": "Penangkap (tentara/residen)",
+                    "short_text": "Penahanan Pangeran (jalur sejarah)",
+                    "text": "Tentara: \"Kalian ditahan atas perintah pusat. Semua pemimpin akan dibawa untuk diadili. Ini demi ketertiban.\" Suasana mencekam; para pengikut terpisah dan desa gelap gulita.",
+                    "historical_text": "Dalam versi sejarah klasik, pemimpin utama ditangkap dan diasingkan—ini memecah jaringan komando dan mengubah wajah perlawanan.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Terima nasib, lindungi warga",
+                            "next": "END",
+                            "effects": { "casualties": 2, "survivors": 10 },
+                            "consequence_text": "Kau berusaha menenangkan warga dan mengamankan anak-anak; sejarah mencatat ketahanan rakyat."
+                        }
+                    ]
+                },
+                {
+                    "id": "s6-n2",
+                    "speaker": "Narator",
+                    "short_text": "Pelarian berhasil (alur alternatif)",
+                    "text": "Narator: \"Kau berhasil membawa Pangeran dan beberapa orang kunci keluar tanpa ketahuan. Gerakan terus, namun kini berpindah ke mode gerilya panjang.\"",
+                    "historical_text": "Alternatif sejarah menulis kemungkinan—keberlangsungan pimpinan dapat mengubah skala dan durasi konflik. Beberapa sumber spekulatif mengeksplorasi skenario seperti ini.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Teruskan perjuangan rahasia (alternate timeline)",
+                            "next": "END",
+                            "effects": {
+                                "alternate_history": true,
+                                "momentum": 3
+                            },
+                            "consequence_text": "Perjuangan berlanjut; jejak sejarah berubah sedikit—namun biaya tetap besar."
+                        }
+                    ]
+                },
+                {
+                    "id": "s6-n3",
+                    "speaker": "Narator",
+                    "short_text": "Balas dendam & pembalasan",
+                    "text": "Narator: \"Balas dendam datang; patroli bertambah, desa-desa disisir, dan beberapa keluarga kehilangan tempat tinggal. Tapi benih perlawanan menyebar ke daerah lain.\"",
+                    "historical_text": "Pembalasan kolonial biasa melibatkan razia dan hukuman kolektif; namun semangat perlawanan terkadang menyebar daripada padam.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Fokus bantu evakuasi dan pemulihan",
+                            "next": "END",
+                            "effects": { "reputation": 5, "survivors": 15 },
+                            "consequence_text": "Kamu mengorganisir pengungsian; beberapa jiwa terselamatkan."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Teruslah serang sebagai gerilya (biaya hidup)",
+                            "next": "END",
+                            "effects": { "casualties": 5, "momentum": 2 },
+                            "consequence_text": "Perlawanan berlanjut dengan pengorbanan; kamu kehilangan beberapa rekan namun mendapat keuntungan taktis."
+                        }
+                    ]
+                },
+                {
+                    "id": "s6-n4",
+                    "speaker": "Sejarawan (narasi kilas balik)",
+                    "short_text": "Refleksi sejarah",
+                    "text": "Sejarawan: \"Peristiwa ini kemudian dipelajari sebagai pelajaran ganda: keberanian rakyat dan harga yang harus dibayar demi perubahan. Catatan ini tak pernah polos—selalu ada sudut pandang berbeda.\"",
+                    "historical_text": "Penafsiran sejarah berubah seiring waktu; sumber Belanda, sumber lokal, dan tradisi lisan memberi gambaran yang berbeda tentang motif, korban, dan makna peristiwa.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Tampilkan ringkasan historis & sumber (mode belajar)",
+                            "next": "END",
+                            "consequence_text": "Kamu membaca catatan dan menyadari kompleksitas sejarah—tak ada jawaban mudah."
+                        }
+                    ]
+                },
+                {
+                    "id": "s6-n5",
+                    "speaker": "Narator",
+                    "short_text": "Penutup personal",
+                    "text": "Narator: \"Tahun-tahun berlalu. Beberapa nama disebut dalam catatan, banyak yang hanya dikenang di desa. Sekarang saatnya kau memilih bagaimana menceritakan kisah ini kepada generasi berikut.\"",
+                    "historical_text": "Warisan perang bukan hanya politik—ia juga soal memori, trauma, dan bagaimana komunitas menjaga ingatan kolektif tentang mereka yang gugur dan selamat.",
+                    "choices": [
+                        {
+                            "id": "c1",
+                            "label": "Tuliskan kisah ini untuk anak cucu (legacy)",
+                            "next": "END",
+                            "effects": { "legacy": 1 },
+                            "consequence_text": "Kisahmu disimpan; generasi mendatang belajar dari pilihanmu."
+                        },
+                        {
+                            "id": "c2",
+                            "label": "Simpan rahasia demi keamanan (diam)",
+                            "next": "END",
+                            "effects": { "safety": 1, "legacy": -1 },
+                            "consequence_text": "Kisah disimpan erat; keamanan jangka pendek terjaga, namun kebijaksanaan tak diwariskan secara terbuka."
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "engine_notes": {
+        "cli_recommendations": [
+            "Tampilkan 1..n untuk pilihan; angka non-valid ulangi input.",
+            "Simpan status pemain (reputation, supplies, intel, alternate_history) dan terapkan efek saat node dipilih.",
+            "Sediakan perintah 'status' untuk melihat nilai-nilai pemain selama permainan."
+        ]
+    }
+}

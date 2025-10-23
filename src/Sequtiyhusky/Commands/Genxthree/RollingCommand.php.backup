@@ -1,0 +1,270 @@
+
+<?php
+// namespace Sequtiyhusky\Fania\Commands\Genxthree;
+
+// use Sequtiyhusky\Fania\Helpers\ChatManager;
+
+// use Sequtiyhusky\Fania\Interfaces\ICommand;
+
+// use Sequtiyhusky\Fania\Model\TempatDudukModel;
+
+// use Sequtiyhusky\Fania\Utils\ConsoleFormat;
+
+// class RollingCommand implements ICommand
+// {
+//     /**
+//      * Config Variable
+//      *
+//      * @var DataManager\Config
+//      */
+//     private $config;
+
+//     private $pasangan = [
+//         ["Rizki", "Aziz"],
+//         ["David", "Reno"],
+//         ["Adinata", "Kevin"],
+//         ["Fikry", "Putra"],
+//         ["Meliana", "Talita"],
+//         ["Natasya", "Dhea"],
+//         ["Cakra", "Reyhan"],
+//         ["Alfandry", "Reza"],
+//         ["Christin", "Arthalita"],
+//         ["Amelia", "Stella"],
+//         ["Yesaya", "Luqman"],
+//         ["Aira", "Eiffeleen"],
+//         ["Keisha"],
+//         ["Noventya", "Aisyah"],
+//         ["Irma", "Galuh"],
+//         ["Cintya", "Ani"],
+//         ["Atsila", "Kayla"],
+//         ["Kikan", "Gracia"]
+//     ];
+
+
+//     private $nickName = [
+//         "ACHMAD DAVID NUGROHO" => "David",
+//         "ADHIMATU ZAFIRAH PRASETYA" => "Aira",
+//         "AISYAH KUSUMA FITRIANI" => "Aisyah",
+//         "AKHDAN MAULANA AZKARENO" => "Akhdan",
+//         "ALFANDRY RADITYA IRAWAN" => "Alfa",
+//         "AMELIA PUTRI" => "Amel",
+//         "ANI CHABIBAH" => "Ani",
+//         "ARTHALITA NIELZAH" => "Elsa",
+//         "ATSILA ALMAS ZULFA RONA" => "Atsila",
+//         "CAKRA RANO BERNADI WIDODO" => "Cakra",
+//         "CINTYA CANDRA RATMIKO" => "Cintya",
+//         "COUNTESSA CHRISTINA DE LIMA ALIM" => "Christin",
+//         "DHEA NOVITA WIJAYANTI" => "Dhea",
+//         "EIFFELEEN PRINCESS EDOGAWA FIRSA" => "Eiffeleen",
+//         "GALUH NIRMALA WIDURA WIRATMOKO" => "Galuh",
+//         "GRACIA IRINE ATALAU LANMA" => "Grace",
+//         "IRMA DYAH AYU SAFITRI" => "Irma",
+//         "KAYLA ARETA ORMANDA" => "Manda",
+//         "KEISHA NURAZALIA RIADI" => "Keisha",
+//         "KIKAN MAHARANI PUTRI" => "Kikan",
+//         "LUQMAN ABDUL MALIK ASSIFA" => "Luqman",
+//         "MELIANA SALMA FAUZIAH" => "Meliana",
+//         "MOCHAMAD KEVIN APRILLYANO" => "Kevin",
+//         "MOCHAMMAD GHANI WASTU ADINATA" => "Ghani",
+//         "MOHAMMAD AZIZ TRI ANANTO" => "Aziz",
+//         "MUHAMMAD REYHAN ANDREAN HARSA" => "Reyhan",
+//         "NATASYA EKA NAZWA" => "Natasya",
+//         "NOVENTYA ULLUL AZMI" => "Noven",
+//         "PUTRA AKMAL KAHITA" => "Putra",
+//         "REZA YUSTIO PUTRA" => "Reza",
+//         "RIZKI TRI ANANG HAKIM" => "Rizki",
+//         "ROFIQON SENA KANZUL FIKRI" => "Fikri",
+//         "STELLA SEMA WAHYUDIANSYAH" => "Stella",
+//         "TALITA AZZAHRA" => "Talita",
+//         "YESAYA YOGA RADITHYA RINEKSO" => "Yesaya",
+//         "FANIA CORRAL MARLEY" => "Fania "
+//     ];
+
+//     /**
+//      * Execute the command
+//      * 
+//      * @param ChatManager $chat
+//      * @return void
+//      */
+//     public function execute(ChatManager $chat): void
+//     {
+//         $this->config = $chat->getDataManager();
+//         $count = $this->config->get("cache.session.number");
+
+//         if ($chat->getDataManager()->get("cache.session.name") === $this->getUsage() && $chat->getDataManager()->get("cache.session.number") === 0) {
+//             $chat->clearConsole();
+//             $this->printBanner();
+
+//             $this->config->set("cache.session.number", $count + 1);
+//         }
+
+//         if ($chat->message === "start") {
+//             echo self::PREFIX . " Memulai program rolling...\n";
+//             usleep(2000000);
+//             echo self::PREFIX . " Mencatat semua anggota kelas X-3 melalui database\n";
+//             usleep(2000000);
+//             echo self::PREFIX . " Data di dapatkan....\n";
+//             usleep(1000000);
+//             echo self::PREFIX . " Menggunakan model tempat duduk secara default \n";
+//             usleep(500000);
+//             echo self::PREFIX . " Memulai untuk mengatur tempat duduk....\n";
+//             $this->aturTempatDuduk("default");
+//         } else if ($chat->message === "asal") {
+//         }
+//     }
+
+//     /**
+//      * Atur tempat duduk
+//      * 
+//      * @return void
+//      */
+//     private function aturTempatDuduk(string $schema)
+//     {
+//         $tempData = [];
+//         while (count($this->pasangan) > 0) {
+//             $this->mixAlgorithm($this->pasangan);
+//             $this->mixAlgorithm($this->pasangan);
+            
+//             $index = $this->selectRandomIndex();
+//             $candidat = $this->pasangan[$index];
+//             $tempData[] = $candidat;
+//             array_splice($this->pasangan, $index, 1); // Remove the selected candidate
+//         }
+
+//         for ($i = 0; $i < count($tempData); $i++) {
+//             $tempData[$i] = implode(" & ", $tempData[$i]);
+//         }
+
+//         $this->printTempatDuduk($tempData, $schema);
+//     }
+
+//     /**
+//      * Select a random index with weighted probability
+//      * 
+//      * @return int
+//      */
+//     private function selectRandomIndex(): int
+//     {
+//         $total = count($this->pasangan);
+//         $boyCount = 0;
+//         $girlCount = 0;
+
+//         foreach ($this->pasangan as $pair) {
+//             if (count($pair) == 2) {
+//                 $boyCount++;
+//             } else {
+//                 $girlCount++;
+//             }
+//         }
+
+//         $probability = $boyCount / ($boyCount + $girlCount * 6);
+//         return rand(0, 100) / 100 < $probability ? rand(0, $boyCount - 1) : rand($boyCount, $total - 1);
+//     }
+
+//     /**
+//      * Print tempat duduk
+//      * 
+//      * @param array $tempData
+//      * @return void
+//      */
+//     private function printTempatDuduk(array $tempData, string $schema)
+//     {
+//         $model = new TempatDudukModel();
+//         // $model = ;
+//         $value = [];
+//         for ($i = 0; $i < 18; $i++) {
+//             $value[] = $this->centerText($tempData[$i] ?? "");
+//         }
+//         switch($schema){
+//             case "default":
+//                 $model->defaultModel($value);
+//             break;
+//         }
+//     }
+
+//     /**
+//      * Center text
+//      * 
+//      * @param string $text
+//      * @return string
+//      */
+//     private function centerText(string $text): string
+//     {
+//         $padding = (20 - strlen($text)) / 2;
+//         return str_repeat(' ', floor($padding)) . $text . str_repeat(' ', ceil($padding));
+//     }
+
+//     /**
+//      * mixAlgorithm
+//      *
+//      * @param  array $data
+//      *
+//      * @return void
+//      */
+//     private function mixAlgorithm(array &$data)
+//     {
+//         for ($j = 0; $j < 10000; $j++) {
+//             for ($i = count($data) - 1; $i >= 0; $i--) {
+//                 $rand        = rand(0, $i);
+//                 $temp        = $data[$i];
+//                 $data[$i]    = $data[$rand];
+//                 $data[$rand] = $temp;
+//             }
+//         }
+//     }
+
+//     /**
+//      * Print banner
+//      * 
+//      * @return void
+//      */
+//     private function printBanner()
+//     {
+
+//         echo ConsoleFormat::BOLD . ConsoleFormat::CYAN . "
+//    ____                    _   _                   
+//   / ___| ___ _ __ __  __  | |_| |__  _ __ ___  ___ 
+//  | |  _ / _ \ '_ \\\ \/ /  | __| '_ \| '__/ _ \/ _ \
+//  | |_| |  __/ | | |>  <   | |_| | | | | |  __/  __/
+//   \____|\___|_| |_/_/\_\___\__|_| |_|_|  \___|\___|
+//                       |_____|                      
+// " . PHP_EOL;
+
+//         echo ConsoleFormat::CYAN .          "------------------------------------------------------------------------------------------" . PHP_EOL;
+//         echo ConsoleFormat::LIGHT_MAGENTA . "Sebuah program dimana program ini bisa mengacak nama-nama murid X-3, kemudian menyusunnya " . PHP_EOL;
+//         echo ConsoleFormat::LIGHT_MAGENTA . "kembali dengan pasangan acak!" . PHP_EOL;
+//         echo ConsoleFormat::CYAN .          "------------------------------------------------------------------------------------------" . PHP_EOL;
+//         echo ConsoleFormat::YELLOW . "[Sequtiyhusky] ";
+//         echo ConsoleFormat::RESET;
+//     }
+
+//     /**
+//      * Undocumented function
+//      *
+//      * @return string
+//      */
+//     public function getName(): string
+//     {
+//         return "rolling";
+//     }
+
+//     /**
+//      * Undocumented function
+//      *
+//      * @return string
+//      */
+//     public function getCategory(): string
+//     {
+//         return "genxthree";
+//     }
+
+//     public function getDescription(): string
+//     {
+//         return "Rolling tempat duduk untuk kelas X-3";
+//     }
+
+//     public function getUsage(): string
+//     {
+//         return "genxthree:rolling";
+//     }
+// } 

@@ -1,0 +1,28 @@
+{
+    "game": {
+        "start": {
+            "path": "Sequtiyhusky\\Fania\\Commands\\Game\\StartCommand",
+            "description": "",
+            "usage": "game:start"
+        }
+    },
+    "genxthree": {
+        "indonesia": {
+            "path": "Sequtiyhusky\\Fania\\Commands\\Genxthree\\IndonesiaCommand",
+            "description": "Acak nama dalam kelompok bahasa indonesia",
+            "usage": "genxthree:indonesia"
+        }
+    },
+    "user": {
+        "hello": {
+            "path": "Sequtiyhusky\\Fania\\Commands\\User\\HelloCommand",
+            "description": "Test Command",
+            "usage": "user:hello"
+        },
+        "ping": {
+            "path": "Sequtiyhusky\\Fania\\Commands\\User\\PingCommand",
+            "description": "Test Command",
+            "usage": "user:ping"
+        }
+    }
+}

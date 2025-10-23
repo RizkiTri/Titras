@@ -1,0 +1,6 @@
+vendor/*
+tests/*
+circuitImplement.php
+play_dialog.php
+GameSchema.md
+Database/Game/profile/*

@@ -1,0 +1,93 @@
+{
+    "id": "narrator_context_pack_v1",
+    "title": "Narator — Konteks Cerita (Perang Jawa)",
+    "locale": "id-ID",
+    "version": "1.0",
+    "description": "Sekumpulan entri narator yang menjelaskan konteks setiap scene secara jelas — dibuat untuk dipasang sebagai node pembuka pada setiap scene CLI game.",
+    "show_history_by_default": false,
+    "entries": [
+        {
+            "id": "intro-prologue",
+            "scene_ref": "scene-01-prologue",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Senja di dusun — latar awal",
+            "text_long": "Senja turun di dusun kecil. Isu pembangunan jalan yang melintasi makam leluhur membangkitkan keresahan. Apa yang terlihat sebagai urusan administratif bagi sebagian orang, bagi keluarga di sini berarti gangguan pada makam dan kehormatan leluhur. Pilihanmu malam ini akan menentukan apakah kabar itu diantar, disembunyikan, atau malah memicu perlawanan.",
+            "text_short": "Senja, isu makam, peluang jadi kurir atau penengah.",
+            "historical_note": "Konteks: Pelanggaran terhadap tanah leluhur oleh proyek kolonial adalah salah satu faktor yang memicu ketegangan menjelang Perang Jawa 1825.",
+            "show_history": true
+        },
+        {
+            "id": "intro-uprising",
+            "scene_ref": "scene-02-uprising",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Malam pertemuan — keputusan taktis",
+            "text_long": "Malam ini para tokoh berkumpul: Kyai, pemuda, dan warga yang lelah. Taktik harus dipilih—apakah mengutamakan keselamatan warga, atau mengambil kesempatan untuk melumpuhkan musuh? Keputusan kecil di sini menentukan langkah-langkah yang akan mengikuti.",
+            "text_short": "Malam kebijakan dan taktik; pilihlah bijak.",
+            "historical_note": "Konteks: Tokoh agama dan lokal sering menjadi pusat legitimasi bagi gerakan perlawanan, memberi arahan moral sekaligus taktik.",
+            "show_history": true
+        },
+        {
+            "id": "intro-wait-morning",
+            "scene_ref": "scene-02-wait-morning",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Menunggu fajar—keputusan yang aman",
+            "text_long": "Kamu memilih menunggu fajar demi keamanan. Pagi mengubah patroli, membuka rute baru, tapi juga bisa menghilangkan peluang malam. Menunggu adalah pilihan strategis yang melibatkan pertimbangan informasi dan keselamatan warga.",
+            "text_short": "Menunggu fajar: aman, namun berisiko kehilangan kesempatan.",
+            "historical_note": "Konteks operasional: kurir dan gerilyawan sering menimbang antara menempuh jalur malam yang sunyi atau menunggu siang yang lebih terlihat.",
+            "show_history": true
+        },
+        {
+            "id": "intro-ambush",
+            "scene_ref": "scene-03-ambush",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Kabut di jembatan — ancaman dan strategi",
+            "text_long": "Di jembatan Progo, setiap langkah, suara, dan perintah menentukan hasil. Penyergapan menuntut koordinasi, pilihan antara serangan cepat atau sabotase logistik yang lebih safe. Ingat: warga di sekitarnya bisa terimbas—pilih strategi yang meminimalkan korban sipil.",
+            "text_short": "Jembatan Progo: sergap atau sabotase?",
+            "historical_note": "Konteks militer: serangan di jalur suplai adalah teknik gerilya klasik yang mengandalkan pengetahuan lokal tentang rute dan medan.",
+            "show_history": true
+        },
+        {
+            "id": "intro-fort",
+            "scene_ref": "scene-04-benteng",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Di bawah bayang benteng—pilih taktik",
+            "text_long": "Benteng Belanda menjaga jalur penting. Menyerang gudang atau mencuri kuda memberi keuntungan logistik, tapi balasan bisa datang keras. Pemilihanmu menentukan apakah desa selamat atau terancam pembalasan.",
+            "text_short": "Benteng besar—risiko vs hadiah.",
+            "historical_note": "Konteks logistik: mengganggu gudang musuh sering memperpendek kemampuan lawan, namun menimbulkan risiko sosial bagi warga.",
+            "show_history": true
+        },
+        {
+            "id": "intro-negotiation",
+            "scene_ref": "scene-05-negotiation",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Meja perundingan—waspada",
+            "text_long": "Pertemuan diplomatik bisa menjadi jalan damai atau jebakan. Kewaspadaan dan kecerdikan diperlukan—satu kata yang salah atau satu gerak yang mencurigakan bisa mengubah pertemuan jadi tragedi.",
+            "text_short": "Pertemuan yang bisa jadi jebakan.",
+            "historical_note": "Konteks diplomasi: tawaran diskusi kolonial sering diiringi pengawasan dan potensi penahanan pemimpin lokal.",
+            "show_history": true
+        },
+        {
+            "id": "intro-epilog",
+            "scene_ref": "scene-06-epilogue",
+            "trigger": "on_scene_start",
+            "speaker": "Narator",
+            "short_text": "Jejak peristiwa—refleksi",
+            "text_long": "Akhir perjalanan menempatkan semua pilihanmu dalam perspektif. Hasil bisa berupa penahanan, pengasingan, atau kelanjutan gerakan. Warisan konflik ini abadi—sebagian dikenang, sebagian dilupakan.",
+            "text_short": "Epilog: konsekuensi pilihan.",
+            "historical_note": "Konteks sejarah: Perang Jawa membawa perubahan jangka panjang; jejaknya tampak pada politik dan memori kolektif.",
+            "show_history": true
+        }
+    ],
+    "notes_for_integration": {
+        "usage": "Letakkan setiap entry sebagai node pertama (pembuka) pada scene yang sesuai. Engine CLI bisa menampilkan 'text_long' bila pemain memilih 'lihat konteks', atau hanya 'text_short' sebagai pembuka cepat.",
+        "placeholders": "Jika ingin menampilkan status dinamis (mis. reputation), gunakan tanda kurung kurawal ganda seperti {{reputation}} dan tambah fungsi pengganti di engine.",
+        "toggle": "Gunakan 'show_history_by_default' untuk mengatur apakah 'historical_note' muncul otomatis atau hanya saat pemain meminta.",
+        "format": "File ini dibuat sebagai sumber tunggal narator; kamu dapat menggabungkannya ke file game utama atau memanggilnya terpisah saat inisialisasi scene."
+    }
+}
