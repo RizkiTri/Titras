@@ -4,10 +4,30 @@
         "updated": 289434923,
         "loadedBefore": true,
         "session": {
-            "name": "none",
-            "number": 0
+            "name": "game:start",
+            "number": 7
         }
     },
-    "isGame": false,
-    "gameData": []
+    "isGame": true,
+    "gameData": {
+        "name": "Seqsa",
+        "created_at": "2025-10-19 14:51:30",
+        "score": 0,
+        "inventory": [],
+        "id_progress": 0,
+        "gameState": {
+            "reputation": 0,
+            "supplies": 0,
+            "intel": 1,
+            "bravery": 1,
+            "money": 0,
+            "morality": 0,
+            "alternate_history": false,
+            "current_node": "s3-n4",
+            "time": "night",
+            "stealth": 2,
+            "surprise": 2,
+            "enemy_morale": -2
+        }
+    }
 }
